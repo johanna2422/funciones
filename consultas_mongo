@@ -1,0 +1,15 @@
+
+// Usuario con nombre de ususario "Frank_blog"
+db.usuario.findOne({ "nombre_usuario": { $eq: 'Frank_blog' } })
+
+// Usuarios llamados peter
+db.usuario.find({ "nombre": /.*Peter.*/ })
+
+// Usuarios con cp "39005"
+db.usuario.find({ "direccion": { $elemMatch: "cp": "39005" } }).count()
+
+// Usuario con número de telefono "111111111"
+db.usuario.findOne({ "telefonos": { $all: ["111111111"] } })
+
+// Nombre de usuario y cuenta de twitter
+db.usuario.find({ "direccion": { $elemMatch: "cp": $gte: "39005" } }, { nombre_usuario: 1, cuenta_twitter: 1, _id: 0 })
